@@ -1,0 +1,20 @@
+ID: AUTOMATION_CONTENT
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: HDI_VIEWS
+   type: hdb
+   path: HDI_VIEWS
+   requires:
+    - name: hdi_HDI_VIEWS
+
+resources:
+ - name: hdi_HDI_VIEWS
+   parameters:
+      config:
+         schema: ASWATHY_STD_MODELS_HDI
+         database_id: d87c0583-5be7-4b13-8804-c520cc7249e8
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_STAR_JOIN_UNIT_CONV" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HE2E_CV_STAR_JOIN_UNIT_CONV"/>
+<localVariables>
+  <variable id="IP_DISCOUNT_RATE" parameter="true">
+    <descriptions defaultDescription="IP_DISCOUNT_RATE"/>
+    <variableProperties datatype="DECIMAL" length="10" scale="2" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="Single"/>
+      <derivationRule>
+        <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::SALES_TRANSACTIONDATA_SALESREPORT1</resourceUri>
+        <resultElementName>PRODUCT_SALES_PRICE</resultElementName>
+        <columnFilter columnName="SALES_ID">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" value="1001"/>
+        </columnFilter>
+      </derivationRule>
+      <defaultRange/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_TRANSACTIONDATA_SALESREPORT1">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::SALES_TRANSACTIONDATA_SALESREPORT1</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="SALES_ID" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="SALESREGION_ID"/>
+      <viewAttribute id="SOLD_ON"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="PRODUCT_ACTUAL_PRICE" aggregationType="sum"/>
+      <viewAttribute id="PRODUCT_SALES_PRICE" aggregationType="sum"/>
+      <viewAttribute id="PRODUCT_QUANTITY" aggregationType="sum"/>
+      <viewAttribute id="NET_SALES" aggregationType="sum"/>
+    
+      <viewAttribute id="SALES_ID_1" aggregationType="sum"/>
+      <viewAttribute id="CUSTOMER_ID_1"/>
+      <viewAttribute id="SALESREGION_ID_1"/>
+      <viewAttribute id="SOLD_ON_1"/>
+      <viewAttribute id="PRODUCT_ID_1"/>
+      <viewAttribute id="PRODUCT_ACTUAL_PRICE_1" aggregationType="sum"/>
+      <viewAttribute id="PRODUCT_SALES_PRICE_1" aggregationType="sum"/>
+      <viewAttribute id="PRODUCT_QUANTITY_1" aggregationType="sum"/>
+      <viewAttribute id="NET_SALES_1" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="AUTOMATION_CONTENT.HDI_VIEWS::SALES_TRANSACTIONDATA_SALESREPORT1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_ID_1" source="SALES_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID_1" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALESREGION_ID_1" source="SALESREGION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLD_ON_1" source="SOLD_ON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID_1" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ACTUAL_PRICE_1" source="PRODUCT_ACTUAL_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_SALES_PRICE_1" source="PRODUCT_SALES_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_QUANTITY_1" source="PRODUCT_QUANTITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_SALES_1" source="NET_SALES"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Aggregation_1">
+  <attributes>
+    <attribute id="SALES_ID" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALES_ID"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="SALES_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_ID$local">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID$local">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="SALESREGION_ID$local">
+      <descriptions defaultDescription="SALESREGION_ID"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="SALESREGION_ID"/>
+    </attribute>
+    <attribute id="SOLD_ON$local">
+      <descriptions defaultDescription="SOLD_ON"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="SOLD_ON"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="CV_CALC_ATTR" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CV_CALC_ATTR"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="100">
+        <formula>&quot;CUSTOMER_NAME&quot;+'--'+&quot;GENDER&quot;</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="PRODUCT_ACTUAL_PRICE" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRODUCT_ACTUAL_PRICE"/>
+      <measureMapping columnObjectName="Aggregation_1" columnName="PRODUCT_ACTUAL_PRICE"/>
+    </measure>
+    <measure id="PRODUCT_SALES_PRICE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRODUCT_SALES_PRICE"/>
+      <measureMapping columnObjectName="Aggregation_1" columnName="PRODUCT_SALES_PRICE"/>
+    </measure>
+    <measure id="PRODUCT_QUANTITY" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRODUCT_QUANTITY"/>
+      <measureMapping columnObjectName="Aggregation_1" columnName="PRODUCT_QUANTITY"/>
+    </measure>
+    <measure id="NET_SALES" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NET_SALES"/>
+      <measureMapping columnObjectName="Aggregation_1" columnName="NET_SALES"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+  
+    <measure id="CV_CM_UNIT_CONV" order="6" semanticType="quantity" aggregationType="sum" measureType="quantity" datatype="DECIMAL" length="13" scale="2" expressionLanguage="COLUMN_ENGINE">
+      <descriptions defaultDescription="CV_CM_UNIT_CONV"/>
+      <fixedUnit>FA</fixedUnit>
+      <unitConversion generateOutputUnitCurrencyAttribute="false">
+        <client>
+          <value>800</value>
+        </client>
+        <unitConversionTables rates="AUTOMATION_CONTENT.HDI_VIEWS::T006" dimension="AUTOMATION_CONTENT.HDI_VIEWS::T006D"/>
+        <sourceUnit>
+          <value>C</value>
+        </sourceUnit>
+        <targetUnit>
+          <value>FA</value>
+        </targetUnit>
+      </unitConversion>
+      <formula>&quot;NET_SALES&quot;</formula>
+      
+      </measure>
+    <measure id="CV_COUNTER" order="7" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="CV_COUNTER"/>
+      <exceptionAggregation>
+        <attribute attributeName="SALES_ID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      
+      </measure>
+    <measure id="CV_IP_MEASURE_VALUE" order="9" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="13" scale="2" expressionLanguage="COLUMN_ENGINE" hidden="true">
+      <descriptions defaultDescription="CV_IP_MEASURE_VALUE"/>
+      <formula>&quot;NET_SALES&quot; - (0.5 * $$IP_DISCOUNT_RATE$$)</formula>
+      
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures>
+    <measure id="CV_RM" order="8" aggregationType="sum" datatype="DECIMAL" length="10" scale="2" baseMeasure="NET_SALES">
+      <descriptions defaultDescription="CV_RM"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CUSTOMER_NAME">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="Mohan"/>
+        </filter>
+        <dimensionUri>AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_CUSTOMER</dimensionUri>
+      </restriction>
+    </measure>
+  </restrictedMeasures>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_CUSTOMER">
+      <attributes>
+        <attributeRef>CUSTOMER_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUSTOMER_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="inner" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_PRODUCTS">
+      <attributes>
+        <attributeRef>PRODUCT_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>PRODUCT_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="inner" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_SALESREGION">
+      <attributes>
+        <attributeRef>SALESREGION_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>SALESREGION_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="inner" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_TIME">
+      <attributes>
+        <attributeRef>SOLD_ON$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>DATE_SQL</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="inner" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="277"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="295" y="-165"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_CUSTOMER" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="327" y="196"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_PRODUCTS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_SALESREGION" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="218" y="107"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_TIME" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="901" y="-233"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

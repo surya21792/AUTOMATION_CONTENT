@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_INPUTPARAMETER" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" runWithInvokerPrivileges="true">
+<descriptions defaultDescription="HE2E_CV_INPUTPARAMETER"/>
+<localVariables>
+  <variable id="IP_1" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="INTEGER" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="Single"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_2" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="INTEGER" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="Single"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_PC_HIERARCHY">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_PC_HIERARCHY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_PC_HIERARCHY">
+  <attributes>
+    <attribute id="EMPLOYEE_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="EMPLOYEE_ID"/>
+    </attribute>
+    <attribute id="EMPLOYEE_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_NAME"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="EMPLOYEE_NAME"/>
+    </attribute>
+    <attribute id="DOJ" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOJ"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="DOJ"/>
+    </attribute>
+    <attribute id="CONTACT_NO" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT_NO"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="CONTACT_NO"/>
+    </attribute>
+    <attribute id="EMAIL_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_ID"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="EMAIL_ID"/>
+    </attribute>
+    <attribute id="MANAGER_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANAGER_ID"/>
+      <keyMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="MANAGER_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC_1" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="INTEGER" expressionLanguage="SQL">
+        <formula>&quot;SALARY&quot; +'$$IP_1$$'+'$$IP_2$$'</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="SALARY" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SALARY"/>
+      <measureMapping columnObjectName="HE2E_CV_PC_HIERARCHY" columnName="SALARY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

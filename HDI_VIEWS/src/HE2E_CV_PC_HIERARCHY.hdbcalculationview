@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_CV_PC_HIERARCHY" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HE2E_CV_PC_HIERARCHY"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_MASTERDATA">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_MASTERDATA</resourceUri>
+  </DataSource>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_TRANSACTIONDATA">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_TRANSACTIONDATA</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="EMPLOYEE_ID" aggregationType="sum"/>
+      <viewAttribute id="EMPLOYEE_NAME"/>
+      <viewAttribute id="DOJ"/>
+      <viewAttribute id="CONTACT_NO" aggregationType="sum"/>
+      <viewAttribute id="EMAIL_ID"/>
+      <viewAttribute id="MANAGER_ID" aggregationType="sum"/>
+      <viewAttribute id="SALARY" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_MASTERDATA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/></input>
+    <input node="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_TRANSACTIONDATA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+    </input>
+    <joinAttribute name="EMPLOYEE_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="EMPLOYEE_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPLOYEE_ID"/>
+    </attribute>
+    <attribute id="EMPLOYEE_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMPLOYEE_NAME"/>
+    </attribute>
+    <attribute id="DOJ" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOJ"/>
+      <keyMapping columnObjectName="Join_1" columnName="DOJ"/>
+    </attribute>
+    <attribute id="CONTACT_NO" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT_NO"/>
+      <keyMapping columnObjectName="Join_1" columnName="CONTACT_NO"/>
+    </attribute>
+    <attribute id="EMAIL_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="EMAIL_ID"/>
+    </attribute>
+    <attribute id="MANAGER_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANAGER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="MANAGER_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="SALARY" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SALARY"/>
+      <measureMapping columnObjectName="Join_1" columnName="SALARY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="CV_PC_HIERARCHY">
+      <attributeRef xsi:type="DataFoundation:Attribute">EMPLOYEE_ID</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">MANAGER_ID</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:ParentChildHierarchy" id="CV_PC_HIERARCHY" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE_IF_DEFINED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="CV_PC_HIERARCHY"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <attributeParentPair attribute="EMPLOYEE_ID" parentAttribute="MANAGER_ID"/>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="94" y="214"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_MASTERDATA" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="AUTOMATION_CONTENT.HDI_VIEWS::PC_HIERARCHY_EMPLOYEE_TRANSACTIONDATA" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

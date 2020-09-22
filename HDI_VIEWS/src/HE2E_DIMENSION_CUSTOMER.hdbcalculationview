@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_CUSTOMER" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HE2E_DIMENSION_CUSTOMER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_CUSTOMER">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_CUSTOMER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_CUSTOMER">
+  <attributes>
+    <attribute id="CUSTOMER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="CUSTOMER_NAME"/>
+    </attribute>
+    <attribute id="DOB" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOB"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="DOB"/>
+    </attribute>
+    <attribute id="GENDER" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GENDER"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="GENDER"/>
+    </attribute>
+    <attribute id="EMAIL_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_ID"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="EMAIL_ID"/>
+    </attribute>
+    <attribute id="PHONE_NUMBER" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONE_NUMBER"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="PHONE_NUMBER"/>
+    </attribute>
+    <attribute id="IS_PRIMARY_CUSTOMER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IS_PRIMARY_CUSTOMER"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_CUSTOMER" columnName="IS_PRIMARY_CUSTOMER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

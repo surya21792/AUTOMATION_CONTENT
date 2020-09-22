@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_SALESREGION" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HE2E_DIMENSION_SALESREGION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_SALESREGION">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_SALESREGION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_SALESREGION">
+  <attributes>
+    <attribute id="SALESREGION_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALESREGION_ID"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="SALESREGION_ID"/>
+    </attribute>
+    <attribute id="AREA" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AREA"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="AREA"/>
+    </attribute>
+    <attribute id="CITY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="CITY"/>
+    </attribute>
+    <attribute id="STATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="STATE"/>
+    </attribute>
+    <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="GEO_REGION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GEO_REGION"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_SALESREGION" columnName="GEO_REGION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

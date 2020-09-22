@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="AUTOMATION_CONTENT.HDI_VIEWS::HE2E_DIMENSION_PRODUCTS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HE2E_DIMENSION_PRODUCTS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_PRODUCT">
+    <resourceUri>AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_PRODUCT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="AUTOMATION_CONTENT.HDI_VIEWS::SALES_MASTERDATA_PRODUCT">
+  <attributes>
+    <attribute id="PRODUCT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_PRODUCT" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_PRODUCT" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="PRODUCT_CATEGORY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CATEGORY"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_PRODUCT" columnName="PRODUCT_CATEGORY"/>
+    </attribute>
+    <attribute id="MANUFACTURED_BY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANUFACTURED_BY"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_PRODUCT" columnName="MANUFACTURED_BY"/>
+    </attribute>
+    <attribute id="MANUFACTURED_ON" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANUFACTURED_ON"/>
+      <keyMapping columnObjectName="SALES_MASTERDATA_PRODUCT" columnName="MANUFACTURED_ON"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
